@@ -5,6 +5,10 @@ function App() {
     <Father>
       <Box bgColor="teal" />
       <Circle bgColor="tomato" />
+      <Box as="a" href="/">
+        asdfasdf
+      </Box>
+      <Input />
     </Father>
   );
 }
@@ -25,6 +29,6 @@ const Circle = styled(Box)`
   border-radius: 50px;
 `;
 
-const Text = styled.span`
-  color: white;
+const Input = styled.input.attrs({ required: true })`
+  background-color: yellow;
 `;
