@@ -4,8 +4,9 @@ function App() {
   return (
     <Wrapper>
       <Box>
-        <span>%%%%</span>
+        <TextTag>%%%%</TextTag>
       </Box>
+      <TextTag>!!!!</TextTag>
     </Wrapper>
   );
 }
@@ -14,6 +15,10 @@ export default App;
 
 const Wrapper = styled.div`
   display: flex;
+  height: 100vh;
+  width: 100vh;
+  justify-content: center;
+  align-items: center;
 `;
 
 const rotateAni = keyframes`
@@ -30,6 +35,10 @@ const rotateAni = keyframes`
   }
 `;
 
+const TextTag = styled.span`
+  font-size: 36px;
+`;
+
 const Box = styled.div`
   display: flex;
   background-color: tomato;
@@ -38,13 +47,7 @@ const Box = styled.div`
   justify-content: center;
   align-items: center;
   animation: ${rotateAni} 1s linear infinite;
-  span {
-    font-size: 36px;
-    &:hover {
-      font-size: 50px;
-    }
-    &:active {
-      opacity: 0;
-    }
+  ${TextTag}:hover {
+    font-size: 90px;
   }
 `;
