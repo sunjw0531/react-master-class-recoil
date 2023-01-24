@@ -7,18 +7,22 @@ function App() {
         <TextTag>%%%%</TextTag>
       </Box>
       <TextTag>!!!!</TextTag>
+      <AnotherBox>&&&&&&</AnotherBox>
     </Wrapper>
   );
 }
 
 export default App;
 
-const Wrapper = styled.div`
+const FlexDiv = styled.div`
   display: flex;
-  height: 100vh;
-  width: 100vh;
   justify-content: center;
   align-items: center;
+`;
+
+const Wrapper = styled(FlexDiv)`
+  height: 100vh;
+  width: 100vh;
 `;
 
 const rotateAni = keyframes`
@@ -39,7 +43,7 @@ const TextTag = styled.span`
   font-size: 36px;
 `;
 
-const Box = styled.div`
+const Box = styled(FlexDiv)`
   display: flex;
   background-color: tomato;
   height: 200px;
@@ -50,4 +54,8 @@ const Box = styled.div`
   ${TextTag}:hover {
     font-size: 90px;
   }
+`;
+
+const AnotherBox = styled(Box)`
+  background-color: blue;
 `;
