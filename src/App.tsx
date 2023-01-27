@@ -1,24 +1,13 @@
 import styled from 'styled-components';
+import Circle from './Circle';
 
 function App() {
   return (
-    <Wrapper>
-      <Title>Hello</Title>
-    </Wrapper>
+    <div>
+      <Circle bgColor="red" />
+      <Circle bgColor="blue" />
+    </div>
   );
 }
 
 export default App;
-
-const Wrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100vh;
-  background-color: ${(props) => props.theme.backgroundColor};
-`;
-
-const Title = styled.h1`
-  color: ${(props) => props.theme.textColor};
-`;
