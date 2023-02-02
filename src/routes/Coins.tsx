@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 const Container = styled.div`
   padding: 0px 20px;
   max-width: 480px;
-  maring: 0 auto;
+  margin: 0 auto;
 `;
 const Header = styled.header`
   height: 15vh;
@@ -21,9 +21,10 @@ const Coin = styled.li`
   border-radius: 15px;
   margin-bottom: 10px;
   a {
+    display: flex;
+    align-items: center;
     padding: 20px;
     transition: color 0.2s ease-in;
-    display: block;
   }
   &:hover {
     a {
@@ -40,6 +41,12 @@ const Title = styled.h1`
 const Loader = styled.span`
   display: block;
   text-align: center;
+`;
+
+const Img = styled.img`
+  width: 35px;
+  height: 35px;
+  margin-right: 10px;
 `;
 
 interface CoinInterface {
@@ -75,7 +82,12 @@ function Coins() {
           {coins.map((coin) => {
             return (
               <Coin key={coin.id}>
-                <Link to={`/${coin.id}`}>{coin.id} &rarr;</Link>
+                <Link to={`/${coin.id}`} state={{ name: coin.name }}>
+                  <Img
+                    src={`https://coinicons-api.vercel.app/api/icon/${coin.symbol.toLowerCase()}`}
+                  />
+                  {coin.name} &rarr;
+                </Link>
               </Coin>
             );
           })}
