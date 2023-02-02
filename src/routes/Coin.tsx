@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { Routes, Route, useParams, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { NumericLiteral } from 'typescript';
+import Chart from './Chart';
+import Price from './Price';
 
 interface RouteState {
   name: string;
@@ -122,10 +124,10 @@ function Coin() {
               <span>{priceInfo?.max_supply}</span>
             </OverviewItem>
           </Overview>
-          {/* <Routes>
-            <Route path={`/${coinId}/price`} element={<Price />} />
-            <Route path={`/${coinId}/chart`} element={<Chart />}/>
-          </Routes> */}
+          <Routes>
+            <Route path="/price" element={<Price />} />
+            <Route path="/chart" element={<Chart />} />
+          </Routes>
         </>
       )}
     </Container>
