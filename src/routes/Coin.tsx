@@ -105,6 +105,9 @@ function Coin() {
           {state?.name ? state.name : loading ? 'loading...' : infoData?.name}
         </title>
       </Helmet>
+      <Link to={'/'}>
+        <BackBtn>◁</BackBtn>
+      </Link>
       <Header>
         <Title>
           {state?.name ? state.name : loading ? 'loading...' : infoData?.name}
@@ -164,10 +167,19 @@ const Container = styled.div`
   margin: 0 auto;
 `;
 const Header = styled.header`
-  height: 15vh;
+  height: 13vh;
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+const BackBtn = styled.button`
+  border-radius: 30px;
+  border: none;
+  padding-top: 0px;
+  color: black;
+  background-color: orange;
+  margin-top: 20px;
 `;
 
 const Loader = styled.span`
