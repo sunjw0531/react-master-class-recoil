@@ -83,6 +83,7 @@ function Coin() {
   const state = location.state as RouteState;
   const priceMatch = useMatch('/:coinId/price');
   const chartMatch = useMatch('/:coinId/chart');
+  const [mode, setMode] = useState<string>('dark');
 
   const { isLoading: infoLoading, data: infoData } = useQuery<InfoData>(
     ['info', coinId],
@@ -97,6 +98,11 @@ function Coin() {
   );
 
   const loading = infoLoading || tickersLoading;
+
+  // const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  //   event.preventDefault();
+  //   mode === 'dark' ? setMode('light') : setMode('dark');
+  // };
 
   return (
     <Container>
@@ -166,6 +172,11 @@ const Container = styled.div`
   max-width: 480px;
   margin: 0 auto;
 `;
+const Tools = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
 const Header = styled.header`
   height: 13vh;
   display: flex;

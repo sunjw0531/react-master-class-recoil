@@ -1,7 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
 import Router from './Router';
 import { ReactQueryDevtools } from 'react-query/devtools';
-
+import { useState } from 'react';
+import { ThemeProvider } from 'styled-components';
+import { lightTheme, darkTheme } from './theme';
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
 html, body, div, span, applet, object, iframe,
@@ -68,11 +70,20 @@ a{
 `;
 
 function App() {
+  const [mode, setMode] = useState('dark');
+  const changeMode = () => {
+    setMode((current) => (current === 'dark' ? 'light' : 'dark'));
+  };
   return (
     <>
-      <GlobalStyle />
-      <Router />
-      <ReactQueryDevtools initialIsOpen={true} />
+      <ThemeProvider theme={mode === 'dark' ? darkTheme : lightTheme}>
+        <GlobalStyle />
+        <button onClick={changeMode}>
+          {mode === 'dark' ? 'light' : 'dark'}
+        </button>
+        <Router />
+        <ReactQueryDevtools initialIsOpen={true} />
+      </ThemeProvider>
     </>
   );
 }
