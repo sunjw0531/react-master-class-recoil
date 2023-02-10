@@ -18,8 +18,7 @@ const Header = styled.header`
 `;
 const CoinsList = styled.ul``;
 const Coin = styled.li`
-  background-color: white;
-  color: ${(props) => props.theme.bgColor};
+  background-color: ${(props) => props.theme.textColor};
 
   border-radius: 15px;
   margin-bottom: 10px;
@@ -52,6 +51,10 @@ const Img = styled.img`
   margin-right: 10px;
 `;
 
+const CoinLink = styled(Link)`
+  color: ${(props) => props.theme.bgColor};
+`;
+
 interface ICoin {
   id: string;
   name: string;
@@ -79,12 +82,12 @@ function Coins() {
           {data?.slice(0, 100).map((coin) => {
             return (
               <Coin key={coin.id}>
-                <Link to={`/${coin.id}`} state={{ name: coin.name }}>
+                <CoinLink to={`/${coin.id}`} state={{ name: coin.name }}>
                   <Img
                     src={`https://coinicons-api.vercel.app/api/icon/${coin.symbol.toLowerCase()}`}
                   />
                   {coin.name} &rarr;
-                </Link>
+                </CoinLink>
               </Coin>
             );
           })}

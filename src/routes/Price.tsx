@@ -49,7 +49,6 @@ function Price({ coinId }: PriceProps) {
     fetchCoinTickers(coinId)
   );
   const [mode, setMode] = useState<string>('mode1');
-  console.log(data);
 
   return (
     <>

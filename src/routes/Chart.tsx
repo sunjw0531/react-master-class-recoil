@@ -22,7 +22,7 @@ function Chart({ coinId }: ChartProps) {
     ['ohlcv', coinId],
     () => fetchCoinHistory(coinId),
     {
-      refetchInterval: 10000,
+      refetchInterval: 5000,
     }
   );
   return (
@@ -31,61 +31,36 @@ function Chart({ coinId }: ChartProps) {
         'Loading chart...'
       ) : (
         <ApexChart
-          type="line"
+          type="candlestick"
           series={[
             {
-              name: 'price',
-              data: data?.map((price) => Number(price.close)) as number[],
+              data: data?.map((price) => {
+                const obj = {
+                  x: new Date(price.time_close * 1000).toISOString(),
+                  y: [price.open, price.high, price.low, price.close],
+                };
+                return obj;
+              }) as [],
             },
           ]}
           options={{
-            theme: {
-              mode: 'dark',
-            },
             chart: {
-              height: 300,
-              width: 500,
-              toolbar: {
-                show: false,
-              },
-              background: 'transparent',
-            },
-            grid: {
-              show: false,
-            },
-            stroke: {
-              curve: 'smooth',
-              width: 3,
+              type: 'candlestick',
+              height: 350,
+              toolbar: { show: false },
             },
             xaxis: {
-              axisBorder: {
-                show: false,
-              },
+              type: 'datetime',
               labels: {
                 show: false,
               },
-              axisTicks: {
-                show: false,
-              },
-              type: 'datetime',
-              categories: data?.map((price) =>
-                new Date(price.time_close * 1000).toISOString()
-              ),
             },
             yaxis: {
-              show: false,
-            },
-            fill: {
-              type: 'gradient',
-              gradient: {
-                gradientToColors: ['#0be881'],
-                stops: [0, 100],
+              tooltip: {
+                enabled: false,
               },
-            },
-            colors: ['#0fbcf9'],
-            tooltip: {
-              y: {
-                formatter: (value) => `$ ${value.toFixed(2)}`,
+              labels: {
+                show: false,
               },
             },
           }}
