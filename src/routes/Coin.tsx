@@ -99,11 +99,6 @@ function Coin() {
 
   const loading = infoLoading || tickersLoading;
 
-  // const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-  //   event.preventDefault();
-  //   mode === 'dark' ? setMode('light') : setMode('dark');
-  // };
-
   return (
     <Container>
       <Helmet>
@@ -157,7 +152,7 @@ function Coin() {
             </Tab>
           </Tabs>
           <Routes>
-            <Route path="/price" element={<Price />} />
+            <Route path="/price" element={<Price coinId={coinId!} />} />
             <Route path="/chart" element={<Chart coinId={coinId!} />} />
           </Routes>
         </>
