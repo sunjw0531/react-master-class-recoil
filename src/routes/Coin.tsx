@@ -75,7 +75,11 @@ interface PriceData {
   };
 }
 
-function Coin() {
+interface ICoinProps {
+  isDark: boolean;
+}
+
+function Coin({ isDark }: ICoinProps) {
   //   const { coinId } = useParams<'coinId'>();
   // v6부터는 useParams 사용시 타입이 string 혹은 undefined
   const { coinId } = useParams();
@@ -153,7 +157,10 @@ function Coin() {
           </Tabs>
           <Routes>
             <Route path="/price" element={<Price coinId={coinId!} />} />
-            <Route path="/chart" element={<Chart coinId={coinId!} />} />
+            <Route
+              path="/chart"
+              element={<Chart isDark={isDark} coinId={coinId!} />}
+            />
           </Routes>
         </>
       )}
