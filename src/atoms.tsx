@@ -33,3 +33,12 @@ export const categoryState = atom<Categories>({
   key: 'category',
   default: Categories.TO_DO,
 });
+
+interface ICategories {
+  category: string;
+}
+
+export const categoriesState = atom<ICategories[]>({
+  key: 'categories',
+  default: [{ category: 'TO_DO' }, { category: 'DOING' }, { category: 'DONE' }],
+});
